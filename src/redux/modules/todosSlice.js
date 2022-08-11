@@ -1,9 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API_TODOS_URL = process.env.REACT_APP_TODOS_API_URL;
-const API_COMMENT_URL = process.env.REACT_AOO_COMMENTS_API_RUL;
-
 const initialState = {
   todos: [],
   isLoading: false,
