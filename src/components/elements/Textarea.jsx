@@ -5,7 +5,6 @@ const Textarea = (props) => {
   const {
     maxLength,
     title,
-    label,
     id,
     name,
     value,
@@ -17,7 +16,6 @@ const Textarea = (props) => {
 
   return (
     <TextareaWrap>
-      <Stlabel>{label}</Stlabel>
       <StTextarea
         maxLength={maxLength}
         title={title}
@@ -38,13 +36,6 @@ export default Textarea;
 
 const TextareaWrap = styled.div`
   width: 100%;
-`;
-
-const Stlabel = styled.label`
-  display: block;
-  font-size: 24px;
-  font-weight: bold;
-  margin: 20px 0;
 `;
 
 const StTextarea = styled.textarea`

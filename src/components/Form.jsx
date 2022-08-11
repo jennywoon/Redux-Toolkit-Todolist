@@ -1,39 +1,32 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import { __getTodos, __postTodos } from "../redux/modules/todosSlice";
-import Input from "./elements/Input";
-import Textarea from "./elements/Textarea";
-import { useNavigate } from "react-router-dom";
-import Button from "./elements/Button";
-import useInput from "../hooks/useInput";
+import { useDispatch } from 'react-redux';
+import { __getTodos, __postTodos } from '../redux/modules/todosSlice';
+import Input from './elements/Input';
+import Textarea from './elements/Textarea';
+import { useNavigate } from 'react-router-dom';
+import Button from './elements/Button';
 
 const Form = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [username, onChangeUsernameHandler] = useInput();
-  const [title, onChangeTitleHandler] = useInput();
-  const [content, setContent] = useState('');
-  const [todo, setTodo] = useState({});
-  const { isLoading, error } = useSelector((state) => state.todos);
+  const [todo, setTodo] = useState({
+    username: '',
+    title: '',
+    content: '',
+  });
 
   useEffect(() => {
     dispatch(__getTodos());
   }, [dispatch]);
 
-  if (isLoading) {
-    return <div>로딩중 ...</div>;
-  }
-  if (error) {
-    return <div>{error.message}</div>;
-  }
+  const { username, title, content } = todo;
 
-  const onChangecontentHandler = (e) => {
-    setContent(e.target.value);
+  const onChangeHandler = (e) => {
+    const { value, name } = e.target;
     setTodo({
-      title: title,
-      content: content,
-      username: username,
+      ...todo,
+      [name]: value,
     });
   };
 
@@ -63,7 +56,7 @@ const Form = () => {
             type='text'
             name='username'
             value={username}
-            onChange={onChangeUsernameHandler}
+            onChange={onChangeHandler}
             placeholder='작성자의 이름을 입력해주세요. (5자 이내)'
             width='100%'
             height='200%'
@@ -77,20 +70,20 @@ const Form = () => {
             type='text'
             name='title'
             value={title}
-            onChange={onChangeTitleHandler}
+            onChange={onChangeHandler}
             placeholder='제목을 입력해주세요. (50자 이내)'
             width='100%'
             height='200%'
           />
+          <Stlabel>내용</Stlabel>
           <Textarea
             cols='50'
             rows='8'
             maxLength='200'
-            label='내용'
             title='1자 이상 200자 이내를입력하세요'
             name='content'
             value={content}
-            onChange={onChangecontentHandler}
+            onChange={onChangeHandler}
             placeholder='내용을 입력해주세요. (200자 이내)'
             width='100%'
             height='200px'
