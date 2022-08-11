@@ -64,7 +64,7 @@ export const __getComments = createAsyncThunk("comments/getComments", async (pay
   try {
     // const data = await axios.get('http://localhost:3001/comments');
     const data = await axios.get('https://redux-toolkit-todolist.herokuapp.com/comments');
-    return thunkAPI.fulfillWithValue(data.data);
+    // return thunkAPI.fulfillWithValue(data.data);
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
   }
