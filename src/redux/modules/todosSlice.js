@@ -14,8 +14,7 @@ const initialState = {
 export const __getTodos = createAsyncThunk("todos/getTodos", async (payload, thunkAPI) => {
   try {
     // const data = await axios.get("http://localhost:3001/todos");
-    // const data = await axios.get("https://redux-toolkit-todolist.herokuapp.com/todos");
-    const data = await axios.get(`${API_TODOS_URL}`);
+    const data = await axios.get("https://redux-toolkit-todolist.herokuapp.com/todos");
     return thunkAPI.fulfillWithValue(data.data);
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
@@ -25,8 +24,7 @@ export const __getTodos = createAsyncThunk("todos/getTodos", async (payload, thu
 export const __deleteTodos = createAsyncThunk("todos/deleteTodos", async (payload, thunkAPI) => {
   try {
     // const data = await axios.delete(`http://localhost:3001/todos/${payload}`);
-    // const data = await axios.delete(`https://redux-toolkit-todolist.herokuapp.com/todos/${payload}`);
-    const data = await axios.delete(`${API_TODOS_URL}/${payload}`);
+    const data = await axios.delete(`https://redux-toolkit-todolist.herokuapp.com/todos/${payload}`);
     thunkAPI.dispatch(__getTodos())
     return thunkAPI.fulfillWithValue(data.data);
   } catch (error) {
@@ -37,8 +35,7 @@ export const __deleteTodos = createAsyncThunk("todos/deleteTodos", async (payloa
 export const __postTodos = createAsyncThunk("todos/postTodos", async (payload, thunkAPI) => {
   try {
     // const data = await axios.post("http://localhost:3001/todos", payload);
-    // const data = await axios.post("https://redux-toolkit-todolist.herokuapp.com/todos", payload);
-    const data = await axios.post(`${API_TODOS_URL}`, payload);
+    const data = await axios.post("https://redux-toolkit-todolist.herokuapp.com/todos", payload);
     return thunkAPI.fulfillWithValue(data.data);
   } catch (error) { 
     return thunkAPI.rejectWithValue(error);
@@ -48,8 +45,7 @@ export const __postTodos = createAsyncThunk("todos/postTodos", async (payload, t
 export const __putTodos = createAsyncThunk("todos/putTodos", async (payload, thunkAPI) => {
   try {
     // await axios.patch(`http://localhost:3001/todos/${payload.id}`, payload);
-    // await axios.patch(`https://redux-toolkit-todolist.herokuapp.com/todos/${payload.id}`, payload);
-    await axios.patch(`${API_TODOS_URL}/${payload.id}`, payload);
+    await axios.patch(`https://redux-toolkit-todolist.herokuapp.com/todos/${payload.id}`, payload);
     return thunkAPI.fulfillWithValue(payload);
   } catch (error) {
     // return thunkAPI.rejectWithValue(error);
@@ -59,8 +55,7 @@ export const __putTodos = createAsyncThunk("todos/putTodos", async (payload, thu
 export const __postComment = createAsyncThunk('comments/postComment', async (payload, thunkAPI) => {
   try {
     // const data = await axios.post('http://localhost:3001/comments', payload);
-    // const data = await axios.post('https://redux-toolkit-todolist.herokuapp.com/comments', payload);
-    const data = await axios.post(`${API_COMMENT_URL}`, payload);
+    const data = await axios.post('https://redux-toolkit-todolist.herokuapp.com/comments', payload);
     // return thunkAPI.fulfillWithValue(payload);
     return thunkAPI.fulfillWithValue(data.data);
   } catch (error) {
@@ -71,8 +66,7 @@ export const __postComment = createAsyncThunk('comments/postComment', async (pay
 export const __getComments = createAsyncThunk("comments/getComments", async (payload, thunkAPI) => {
   try {
     // const data = await axios.get('http://localhost:3001/comments');
-    // const data = await axios.get('https://redux-toolkit-todolist.herokuapp.com/comments');
-    const data = await axios.get(`${API_COMMENT_URL}`);
+    const data = await axios.get('https://redux-toolkit-todolist.herokuapp.com/comments');
     return thunkAPI.fulfillWithValue(data.data);
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
@@ -82,8 +76,7 @@ export const __getComments = createAsyncThunk("comments/getComments", async (pay
 export const __deleteComment = createAsyncThunk("comments/delteComments", async (payload, thunkAPI) => {
   try {
     // await axios.delete(`http://localhost:3001/comments/${payload}`);
-    // await axios.delete(`https://redux-toolkit-todolist.herokuapp.com/comments/${payload}`);
-    await axios.delete(`${API_COMMENT_URL}/${payload}`);
+    await axios.delete(`https://redux-toolkit-todolist.herokuapp.com/comments/${payload}`);
     return thunkAPI.fulfillWithValue(payload);
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
@@ -92,7 +85,7 @@ export const __deleteComment = createAsyncThunk("comments/delteComments", async 
 
 export const __updateComment = createAsyncThunk("comments/updateComments", async (payload, thunkAPI) => {
   try {
-    await axios.patch(`${API_COMMENT_URL}/${payload.id}`, payload);
+    await axios.patch(`https://redux-toolkit-todolist.herokuapp.com/comments/${payload}`, payload);
     thunkAPI.dispatch(__getComments());
     return thunkAPI.fulfillWithValue(payload);
   } catch (error) {
