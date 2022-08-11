@@ -11,7 +11,7 @@ const initialState = {
 export const __getTodos = createAsyncThunk("todos/getTodos", async (payload, thunkAPI) => {
   try {
     // const data = await axios.get("http://localhost:3001/todos");
-    const data = await axios.get(process.env.REACT_APP_API_URL : "https://redux-toolkit-todolist.herokuapp.com/todos");
+    const data = await axios.get("https://redux-toolkit-todolist.herokuapp.com/todos");
     return thunkAPI.fulfillWithValue(data.data);
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
