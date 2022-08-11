@@ -36,6 +36,14 @@ const Comment = () => {
   };
   const postComment = (e) => {
     e.preventDefault();
+    if(userName===''){
+      window.alert("이름을 입력해주세요");
+      return false;
+    }
+    if(userContent===''){
+      window.alert("내용을 입력해주세요");
+      return false;
+    }
     dispatch(__postComment(comment));
     
     /* 초기화 */

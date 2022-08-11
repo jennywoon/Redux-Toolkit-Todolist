@@ -19,7 +19,9 @@ const CommentView = ({ comment }) => {
   };
 
   const deleteBtn = (id) => {
-    dispatch(__deleteComment(id));
+    if(window.confirm("댓글을 삭제하시겠습니까?")){
+      dispatch(__deleteComment(id));
+    }
   };
 
   const [updateComment, setUpdateComment] = useState({
