@@ -64,7 +64,7 @@ export const __getComments = createAsyncThunk("comments/getComments", async (pay
   try {
     // const data = await axios.get('http://localhost:3001/comments');
     const data = await axios.get('https://redux-toolkit-todolist.herokuapp.com/comments');
-    // return thunkAPI.fulfillWithValue(data.data);
+    return thunkAPI.fulfillWithValue(data.data);
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
   }
@@ -82,7 +82,7 @@ export const __deleteComment = createAsyncThunk("comments/delteComments", async 
 
 export const __updateComment = createAsyncThunk("comments/updateComments", async (payload, thunkAPI) => {
   try {
-    await axios.patch(`https://redux-toolkit-todolist.herokuapp.com/comments/${payload}`, payload);
+    await axios.patch(`https://redux-toolkit-todolist.herokuapp.com/comments/${payload.id}`, payload);
     thunkAPI.dispatch(__getComments());
     return thunkAPI.fulfillWithValue(payload);
   } catch (error) {
