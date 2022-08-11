@@ -50,6 +50,7 @@ const StInput = styled.input`
   padding: 12px;
   border-radius: 8px;
   font-size: 14px;
+  outline-color: rgb(254, 83, 31);
   :hover {
     border: 1px solid rgb(254, 83, 31);
   }
